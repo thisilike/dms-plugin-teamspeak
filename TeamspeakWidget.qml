@@ -56,40 +56,11 @@ PluginComponent {
         return dir + "/ts6_apikey.txt";
     }
 
-    // --- Throttle ---
-    property var pendingServers: null
-    property bool throttled: false
-
-    Timer {
-        id: throttleTimer
-        interval: Math.max(16, 1000 / root.maxFps)
-        running: false
-        repeat: false
-        onTriggered: {
-            root.throttled = false;
-            if (root.pendingServers !== null) {
-                root.servers = root.pendingServers;
-                root.pendingServers = null;
-                root.throttled = true;
-                throttleTimer.start();
-            }
-        }
-    }
-
-    function onNewState(newServers) {
-        pendingServers = newServers;
-        if (!throttled) {
-            servers = pendingServers;
-            pendingServers = null;
-            throttled = true;
-            throttleTimer.start();
-        }
-    }
-
     // --- Process ---
     function buildCommand() {
         if (!binaryPath || !apiKeyPath) return [];
-        return [binaryPath, "--addr", wsAddress, "--apikey-path", apiKeyPath];
+        return [binaryPath, "--addr", wsAddress, "--apikey-path", apiKeyPath,
+                "--max-fps", maxFps.toString()];
     }
 
     Process {
@@ -101,13 +72,9 @@ PluginComponent {
             onRead: data => {
                 try {
                     const msg = JSON.parse(data);
-                    if (msg.type === "state") {
-                        root.connected = true;
-                        root.errorMsg = "";
-                        root.onNewState(msg.servers);
-                    } else if (msg.type === "error") {
-                        root.errorMsg = msg.message;
-                    }
+                    root.connected = msg.connected;
+                    root.errorMsg = msg.error;
+                    root.servers = msg.servers;
                 } catch (e) {
                     console.error("TeamspeakStatus: failed to parse JSON:", e, data);
                 }
@@ -154,6 +121,7 @@ PluginComponent {
 
     onBinaryPathChanged: Qt.callLater(restartProcess)
     onWsAddressChanged: Qt.callLater(restartProcess)
+    onMaxFpsChanged: Qt.callLater(restartProcess)
 
     // --- Helpers ---
     // Mute display logic (priority order):
