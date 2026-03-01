@@ -15,14 +15,12 @@ Shows server name, channel, mute state, talking indicator, and away status in yo
 - Away status icon
 - Multi-server badge when connected to multiple servers
 - Channel member list in popout with per-user mute/talking/away indicators
-- Configurable update rate throttle
-
 ## Dependencies
 
 Requires the [ts-status](https://github.com/thisilike/ts-status) binary to bridge the TeamSpeak Remote Apps WebSocket API.
 
 ```
-go install github.com/thisilike/ts-status@latest
+go install github.com/thisilike/ts-status@latest && sudo install ~/go/bin/ts-status /usr/local/bin/
 ```
 
 ## Install
@@ -39,7 +37,7 @@ git clone https://github.com/thisilike/dms-plugin-teamspeak.git \
 3. Go to Plugins
 4. Click Scan
 5. Enable "TeamSpeak Status"
-6. On first launch, TeamSpeak will show an approval prompt for ts-status — accept it
+6. On first launch, TeamSpeak will show an approval prompt for ts-status — accept it (you can review and manage approved apps in **Settings > Remote Apps**)
 
 ## Settings
 
