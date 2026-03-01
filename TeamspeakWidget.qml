@@ -12,7 +12,7 @@ PluginComponent {
     readonly property string plugId: "teamspeakStatus"
 
     // --- Settings ---
-    property string binaryPath: pluginData.binaryPath || "ts6-status"
+    property string binaryPath: pluginData.binaryPath || "ts-status"
     property string wsAddress: pluginData.wsAddress || "ws://localhost:5899"
     property int maxFps: pluginData.maxFps ?? 30
     property bool showServerName: pluginData.showServerName ?? true

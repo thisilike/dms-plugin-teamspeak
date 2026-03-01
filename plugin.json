@@ -8,7 +8,7 @@
     "type": "widget",
     "component": "./TeamspeakWidget.qml",
     "settings": "./TeamspeakSettings.qml",
-    "requires": ["ts6-status"],
+    "requires": ["ts-status"],
     "permissions": [
         "settings_read",
         "settings_write",

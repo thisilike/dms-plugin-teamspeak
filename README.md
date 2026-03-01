@@ -1,14 +1,14 @@
 # dms-plugin-teamspeak
 
-DMS bar widget for real-time TeamSpeak 6 status display.
+DMS bar widget for real-time TeamSpeak status display.
 
 Shows server name, channel, mute state, talking indicator, and away status in your DankMaterialShell bar. The popout panel lists all connected servers with channel members.
 
 ## Dependencies
 
-Requires the [ts6-status](https://github.com/thisilike/ts6-status) binary to bridge the TeamSpeak 6 Remote Apps WebSocket API.
+Requires the [ts-status](https://github.com/thisilike/ts-status) binary to bridge the TeamSpeak Remote Apps WebSocket API.
 
-Install it via AUR (`ts6-status`) or `go install github.com/thisilike/ts6-status@latest`.
+Install it via AUR (`ts-status`) or `go install github.com/thisilike/ts-status@latest`.
 
 ## Install
 
@@ -40,8 +40,8 @@ git clone https://github.com/thisilike/dms-plugin-teamspeak.git \
 
 | Setting | Default | Description |
 |---|---|---|
-| Binary Path | `ts6-status` | Path to the ts6-status binary |
-| WebSocket Address | `ws://localhost:5899` | TS6 Remote Apps WebSocket address |
+| Binary Path | `ts-status` | Path to the ts-status binary |
+| WebSocket Address | `ws://localhost:5899` | TeamSpeak Remote Apps WebSocket address |
 | Max Update Rate | 30 fps | Maximum UI updates per second |
 | Show Server Name | on | Display server name in bar pill |
 | Show Channel Name | on | Display channel name in bar pill |

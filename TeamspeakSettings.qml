@@ -20,15 +20,15 @@ PluginSettings {
     StringSetting {
         settingKey: "binaryPath"
         label: "Binary Path"
-        description: "Path to the ts6-status binary"
-        defaultValue: "ts6-status"
-        placeholder: "/usr/bin/ts6-status"
+        description: "Path to the ts-status binary"
+        defaultValue: "ts-status"
+        placeholder: "/usr/bin/ts-status"
     }
 
     StringSetting {
         settingKey: "wsAddress"
         label: "WebSocket Address"
-        description: "TeamSpeak 6 Remote Apps WebSocket address"
+        description: "TeamSpeak Remote Apps WebSocket address"
         defaultValue: "ws://localhost:5899"
         placeholder: "ws://localhost:5899"
     }
