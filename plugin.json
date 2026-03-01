@@ -2,7 +2,7 @@
     "id": "teamspeakStatus",
     "name": "TeamSpeak Status",
     "description": "Real-time TeamSpeak 6 status display — server, channel, mute, talking, away",
-    "version": "2.0.0",
+    "version": "2.0.1",
     "author": "thisilike",
     "icon": "headset_mic",
     "type": "widget",

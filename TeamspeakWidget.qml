@@ -273,7 +273,7 @@ PluginComponent {
                 headerText: "TeamSpeak Status"
                 detailsText: root.connected
                     ? (root.servers.length + " server" + (root.servers.length !== 1 ? "s" : ""))
-                    : (root.errorMsg || "Disconnected")
+                    : "Disconnected"
                 showCloseButton: true
                 closePopout: root.closePopout
             }
@@ -468,16 +468,40 @@ PluginComponent {
                 }
 
                 // Empty state
-                StyledText {
+                Column {
                     visible: root.servers.length === 0
-                    text: root.connected ? "No servers connected" : (root.errorMsg || "Waiting for TeamSpeak...")
-                    font.pixelSize: Theme.fontSizeMedium
-                    color: Theme.surfaceVariantText
                     width: parent.width
-                    horizontalAlignment: Text.AlignHCenter
-                    wrapMode: Text.WordWrap
+                    spacing: Theme.spacingS
                     topPadding: Theme.spacingM
                     bottomPadding: Theme.spacingM
+
+                    DankIcon {
+                        visible: !root.connected && root.errorMsg
+                        name: "error"
+                        size: Theme.iconSize + 4
+                        color: Theme.error
+                        anchors.horizontalCenter: parent.horizontalCenter
+                    }
+
+                    StyledText {
+                        text: root.connected ? "No servers connected" : (root.errorMsg ? "Connection failed" : "Waiting for TeamSpeak...")
+                        font.pixelSize: Theme.fontSizeMedium
+                        color: Theme.surfaceVariantText
+                        width: parent.width
+                        horizontalAlignment: Text.AlignHCenter
+                        wrapMode: Text.WordWrap
+                    }
+
+                    StyledText {
+                        visible: !root.connected && root.errorMsg
+                        text: root.errorMsg
+                        font.pixelSize: Theme.fontSizeSmall
+                        color: Theme.surfaceVariantText
+                        opacity: 0.7
+                        width: parent.width
+                        horizontalAlignment: Text.AlignHCenter
+                        wrapMode: Text.WordWrap
+                    }
                 }
             }
         }
