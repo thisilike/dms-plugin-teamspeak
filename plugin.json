@@ -1,0 +1,17 @@
+{
+    "id": "teamspeakStatus",
+    "name": "TeamSpeak Status",
+    "description": "Real-time TeamSpeak 6 status display — server, channel, mute, talking, away",
+    "version": "1.0.0",
+    "author": "thisilike",
+    "icon": "headset_mic",
+    "type": "widget",
+    "component": "./TeamspeakWidget.qml",
+    "settings": "./TeamspeakSettings.qml",
+    "requires": ["ts6-status"],
+    "permissions": [
+        "settings_read",
+        "settings_write",
+        "process"
+    ]
+}
