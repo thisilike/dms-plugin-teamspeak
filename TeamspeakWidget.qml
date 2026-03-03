@@ -484,7 +484,7 @@ PluginComponent {
                     }
 
                     StyledText {
-                        text: root.connected ? "No servers connected" : (root.errorMsg ? "Connection failed" : "Waiting for TeamSpeak...")
+                        text: root.connected ? "No servers connected" : (root.errorMsg ? "Error" : "Waiting for TeamSpeak...")
                         font.pixelSize: Theme.fontSizeMedium
                         color: Theme.surfaceVariantText
                         width: parent.width
